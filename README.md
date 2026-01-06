@@ -1,5 +1,5 @@
 # Balatro Games Logo Mod (name subject to change)
-A Balatro Mod that adds custom made textures with Project Moon related characters, abnormalities and themes, as well as new jokers and consumables and Project Moon music
+A Balatro mod that adds 30 different main logo variations, all based on popular (or not so popular) games.
 
 List of logos currently added/planned and credits can be found [here](https://docs.google.com/spreadsheets/d/1QO0SCm5uRwIDvHhKLLEfka8OZTCZm46x84786ckKLw0/edit?gid=0#gid=0)
 
