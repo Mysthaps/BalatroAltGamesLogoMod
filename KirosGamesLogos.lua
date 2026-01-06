@@ -79,7 +79,7 @@ end
 
 local selectedMenu = math.random(1,20)
 
-local selectedMenuFixed = KGL.config.selected_logo
+local selectedMenuFixed = KGL.config.selected_logo or 1
 
 KGL.selected_logo = {name = "AAAA", credits = "AAAA", primaryColour = "AAAA", secondaryColour = "AAAA", contrast = "AAAA", creditsColour = "AAAA"}
 
