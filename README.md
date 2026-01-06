@@ -12,4 +12,5 @@ Every other art done by me.
 ## Special Thanks
 
 Thanks to Poyo, Novell Kira, Maz, Inhaller, Xyile and Pulver from the RegretfulDiscord for suggestions
+
 Thanks to gfsg, Nxkoo, Sillyz and Mysthaps from the Balatro Discord for suggestions
