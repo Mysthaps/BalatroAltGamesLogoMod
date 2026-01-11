@@ -8,7 +8,7 @@ sendDebugMessage("Launching Kiro's Game Logos Mod!", "KirosGameLogoMod")
 
 SMODS.Atlas {key = "modicon",	path = "icon.png",	px = 32, py = 32}
 
-local artGeneral ={
+KGL.logos ={
     {name = "Library of Ruina",                                 file = "balatro.png",   X = 333, Y = 216, credits = "Kiro",                 primaryColour = HEX("edd9b2"), secondaryColour = HEX("bfb8aa"), contrast = 1, creditsColour = HEX("e0e0e0")},
     {name = "Limbus Company",                                   file = "balatro2.png",  X = 333, Y = 216, credits = "Kiro",                 primaryColour = HEX("6b0707"), secondaryColour = HEX("2e0b0b"), contrast = 1, creditsColour = HEX("e0e0e0")},
     {name = "Lobotomy Corporation",                             file = "balatro3.png",  X = 333, Y = 216, credits = "Kiro",                 primaryColour = HEX("dbd38a"), secondaryColour = HEX("b01510"), contrast = 1, creditsColour = HEX("e0e0e0")},
@@ -28,7 +28,7 @@ local artGeneral ={
     {name = "Silent Hill",                                      file = "balatro17.png", X = 333, Y = 216, credits = "Kiro",                 primaryColour = HEX("d1d1d1"), secondaryColour = HEX("666464"), contrast = 1, creditsColour = HEX("e0e0e0")},
     {name = "Judgement",                                        file = "balatro18.png", X = 333, Y = 216, credits = "Kiro",                 primaryColour = HEX("454545"), secondaryColour = HEX("171717"), contrast = 1, creditsColour = HEX("e0e0e0")},
     {name = "Jet Set Radio",                                    file = "balatro19.png", X = 333, Y = 216, credits = "Kiro",                 primaryColour = HEX("e3dd3d"), secondaryColour = HEX("e36905"), contrast = 1, creditsColour = HEX("e0e0e0")},
-    {name = "Resident Evil OG",                                 file = "balatro20.png", X = 255, Y = 100, credits = "Kiro",                 primaryColour = HEX("33201a"), secondaryColour = HEX("4a0c06"), contrast = 1, creditsColour = HEX("e0e0e0")},
+    {name = "Resident Evil - Original Trilogy",                                 file = "balatro20.png", X = 255, Y = 100, credits = "Kiro",                 primaryColour = HEX("33201a"), secondaryColour = HEX("4a0c06"), contrast = 1, creditsColour = HEX("e0e0e0")},
     {name = "Catherine",                                        file = "balatro21.png", X = 333, Y = 216, credits = "Kiro",                 primaryColour = HEX("e346c1"), secondaryColour = HEX("eb83d4"), contrast = 1, creditsColour = HEX("e0e0e0")},
     {name = "Deltarune",                                        file = "balatro22.png", X = 333, Y = 216, credits = "Kiro",                 primaryColour = HEX("1c1c1c"), secondaryColour = HEX("20aafa"), contrast = 3, creditsColour = HEX("e0e0e0")},
     {name = "DOOM",                                             file = "balatro23.png", X = 333, Y = 216, credits = "Kiro",                 primaryColour = HEX("8c2306"), secondaryColour = HEX("d15524"), contrast = 1, creditsColour = HEX("e0e0e0")},
@@ -38,11 +38,21 @@ local artGeneral ={
     {name = "Terraria",                                         file = "balatro27.png", X = 220, Y = 71,  credits = "Kiro",                 primaryColour = HEX("1d96e0"), secondaryColour = HEX("6338c7"), contrast = 1, creditsColour = HEX("e0e0e0")},
     {name = "Super Balatro",                                    file = "balatro28.png", X = 176, Y = 88,  credits = "UltraEpicLeader100",   primaryColour = HEX("8a83cc"), secondaryColour = HEX("8a83cc"), contrast = 1, creditsColour = HEX("e0e0e0")},
     {name = "Sonic The Hedgehog",                               file = "balatro29.png", X = 227, Y = 42,  credits = "UltraEpicLeader100",   primaryColour = HEX("0e49a1"), secondaryColour = HEX("ba040d"), contrast = 3, creditsColour = HEX("e0e0e0")},
-    {name = "Gradius",                                          file = "balatro30.png", X = 274, Y = 44,  credits = "UltraEpicLeader100",   primaryColour = HEX("212121"), secondaryColour = HEX("9c1e61"), contrast = 1, creditsColour = HEX("e0e0e0")},
-
+    {name = "Gradius",                                          file = "balatro30.png", X = 274, Y = 44,  credits = "UltraEpicLeader100",   primaryColour = HEX("000000"), secondaryColour = HEX("000000"), contrast = 1, creditsColour = HEX("2f74ba")},
+    {name = "Persona 5",                                          file = "balatro31.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("e60000"), secondaryColour = HEX("000000"), contrast = 3, creditsColour = HEX("e0e0e0")},
+    {name = "Omori",                                          file = "balatro32.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("f0ebeb"), secondaryColour = HEX("f0ebeb"), contrast = 1, creditsColour = HEX("e0e0e0"), play_colour = HEX("292929"), buttons_colour = HEX("292929"), play_text = HEX("e0e0e0"), buttons_text = HEX("e0e0e0"), menu_colour = HEX("cccccc")},
+    {name = "Oxenfree",                                          file = "balatro33.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("1d382e"), secondaryColour = HEX("1a211e"), contrast = 1, creditsColour = HEX("e0e0e0"), play_colour = HEX("731c36"), buttons_colour = HEX("731c36"), play_text = HEX("e0e0e0"), buttons_text = HEX("e0e0e0"),  menu_colour = HEX("616161")},
+    {name = "Phoenix Wright: Ace Attorney",                         file = "balatro34.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("124d99"), secondaryColour = HEX("8a0f40"), contrast = 2, creditsColour = HEX("e0e0e0"), play_colour = HEX("6b9edb"), buttons_colour = HEX("6b9edb"), play_text = HEX("e0e0e0"), buttons_text = HEX("e0e0e0"),  menu_colour = G.C.CLEAR},
+    {name = "Resident Evil - Modern REmakes",                         file = "balatro35.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("27404f"), secondaryColour = HEX("363b3d"), contrast = 1, creditsColour = HEX("e0e0e0"), play_colour = HEX("58b883"), buttons_colour = HEX("58b883"), play_text = HEX("e0e0e0"), buttons_text = HEX("e0e0e0"), menu_colour = HEX("616161")},
+    {name = "Clair Obscur: Expedition 33",                         file = "balatro36.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("382828"), secondaryColour = HEX("261c1c"), contrast = 1, creditsColour = HEX("e0e0e0"), play_colour = HEX("4d4843"), buttons_colour = HEX("4d4843"), play_text = HEX("e0e0e0"), buttons_text = HEX("e0e0e0"), menu_colour = G.C.CLEAR},
+    {name = "Guilty Gear Xrd REV2",                         file = "balatro37.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("488752"), secondaryColour = HEX("1b361f"), contrast = 1, creditsColour = HEX("e0e0e0"), play_colour = HEX("58b883"), buttons_colour = HEX("58b883"), play_text = HEX("e0e0e0"), buttons_text = HEX("e0e0e0"), menu_colour = HEX("616161")},
+    {name = "Transistor",                         file = "balatro38.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("1d3d35"), secondaryColour = HEX("0e1211"), contrast = 1, creditsColour = HEX("e0e0e0"), play_colour = HEX("10a377"), buttons_colour = HEX("10a377"), play_text = HEX("e0e0e0"), buttons_text = HEX("e0e0e0"), menu_colour = HEX("1f2e2c")},
+    {name = "Milk Inside a Bag Of Milk Inside a Bag of Milk",                         file = "balatro39.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("000000"), secondaryColour = HEX("000000"), contrast = 1, creditsColour = HEX("7c128c"), play_colour = HEX("7c128c"), buttons_colour = HEX("7c128c"), play_text = HEX("e0e0e0"), buttons_text = HEX("e0e0e0"), menu_colour = HEX("000000")},
+    {name = "Milk Outside a Bag Of Milk Outside a Bag of Milk",                         file = "balatro40.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("3d1919"), secondaryColour = HEX("0a0a0a"), contrast = 1, creditsColour = HEX("a32441"), play_colour = HEX("a32441"), buttons_colour = HEX("a32441"), play_text = HEX("e0e0e0"), buttons_text = HEX("e0e0e0"), menu_colour = HEX("262525")},
+    {name = "Hitman",                         file = "balatro41.png", X = 333, Y = 216,  credits = "Kiro",   primaryColour = HEX("4f0a1a"), secondaryColour = HEX("42282e"), contrast = 1, creditsColour = HEX("e0e0e0"), play_colour = HEX("bd0606"), buttons_colour = HEX("e6e6e6"), play_text = HEX("e0e0e0"), buttons_text = HEX("363636"), menu_colour = G.C.CLEAR},
 }
 
-KGL.logos = artGeneral
+
 
 --------------------
 -- Config Options --
@@ -77,7 +87,7 @@ KGL.config_tab = function()
     }}
 end
 
-local selectedMenu = math.random(1,30)
+local selectedMenu = math.random(1,41)
 
 local selectedMenuFixed = KGL.config.selected_logo or 1
 
@@ -96,7 +106,12 @@ if KGL.config.enable_fixed_logo == false then
     KGL.selected_logo.secondaryColour = KGL.logos[selectedMenu].secondaryColour
     KGL.selected_logo.contrast = KGL.logos[selectedMenu].contrast
     KGL.selected_logo.creditsColour = KGL.logos[selectedMenu].creditsColour
-    SMODS.Atlas{key = "balatro", path = artGeneral[selectedMenu].file, px = artGeneral[selectedMenu].X, py = artGeneral[selectedMenu].Y, prefix_config = { key = false }}
+    KGL.selected_logo.play_colour = KGL.logos[selectedMenu].play_colour
+    KGL.selected_logo.buttons_colour = KGL.logos[selectedMenu].buttons_colour
+    KGL.selected_logo.play_text = KGL.logos[selectedMenu].play_text
+    KGL.selected_logo.buttons_text = KGL.logos[selectedMenu].buttons_text
+    KGL.selected_logo.menu_colour = KGL.logos[selectedMenu].menu_colour
+    SMODS.Atlas{key = "balatro", path = KGL.selected_logo.file, px = KGL.selected_logo.X, py = KGL.selected_logo.Y, prefix_config = { key = false }}
 else
     KGL.selected_logo.name = KGL.logos[selectedMenuFixed].name
     KGL.selected_logo.file = KGL.logos[selectedMenuFixed].file
@@ -107,6 +122,11 @@ else
     KGL.selected_logo.secondaryColour = KGL.logos[selectedMenuFixed].secondaryColour
     KGL.selected_logo.contrast = KGL.logos[selectedMenuFixed].contrast
     KGL.selected_logo.creditsColour = KGL.logos[selectedMenuFixed].creditsColour
-    SMODS.Atlas{key = "balatro", path = artGeneral[selectedMenuFixed].file, px = artGeneral[selectedMenuFixed].X, py = artGeneral[selectedMenuFixed].Y, prefix_config = { key = false }}
+    KGL.selected_logo.play_colour = KGL.logos[selectedMenuFixed].play_colour
+    KGL.selected_logo.buttons_colour = KGL.logos[selectedMenuFixed].buttons_colour
+    KGL.selected_logo.play_text = KGL.logos[selectedMenuFixed].play_text
+    KGL.selected_logo.buttons_text = KGL.logos[selectedMenuFixed].buttons_text
+    KGL.selected_logo.menu_colour = KGL.logos[selectedMenuFixed].menu_colour
+    SMODS.Atlas{key = "balatro", path = KGL.selected_logo.file, px = KGL.selected_logo.X, py = KGL.selected_logo.Y, prefix_config = { key = false }}
 end
 
