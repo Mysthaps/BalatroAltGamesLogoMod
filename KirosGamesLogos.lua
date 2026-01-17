@@ -683,6 +683,20 @@ KGL.logos ={
         play_text = HEX("292626"),
         buttons_text = HEX("292626"),
         menu_colour = G.C.CLEAR},
+    {name = "Rhythm Heaven",
+        file = "balatroheaven",
+        X = 333,
+        Y = 216,
+        credits = "King",
+        primaryColour = HEX("faa61a"),
+        secondaryColour = HEX("faa61a"),
+        contrast = 1,
+        creditsColour = HEX("ffffff"),
+        play_colour = HEX("130c0e"),
+        buttons_colour = HEX("130c0e"),
+        play_text = HEX("f15a22"),
+        buttons_text = HEX("faa61a"),
+        multipart_pulse = true},
 }
 
 
@@ -744,7 +758,7 @@ if KGL.config.enable_fixed_logo == false then
     KGL.selected_logo.play_text = KGL.logos[selectedMenu].play_text
     KGL.selected_logo.buttons_text = KGL.logos[selectedMenu].buttons_text
     KGL.selected_logo.menu_colour = KGL.logos[selectedMenu].menu_colour
-    SMODS.Atlas{key = "balatro", path = KGL.selected_logo.file, px = KGL.selected_logo.X, py = KGL.selected_logo.Y, prefix_config = { key = false }}
+    KGL.selected_logo.multipart_pulse = KGL.logos[selectedMenu].multipart_pulse
 else
     KGL.selected_logo.name = KGL.logos[selectedMenuFixed].name
     KGL.selected_logo.file = KGL.logos[selectedMenuFixed].file
@@ -760,6 +774,260 @@ else
     KGL.selected_logo.play_text = KGL.logos[selectedMenuFixed].play_text
     KGL.selected_logo.buttons_text = KGL.logos[selectedMenuFixed].buttons_text
     KGL.selected_logo.menu_colour = KGL.logos[selectedMenuFixed].menu_colour
+    KGL.selected_logo.multipart_pulse = KGL.logos[selectedMenuFixed].multipart_pulse
+end
+
+if not KGL.selected_logo.multipart_pulse then
     SMODS.Atlas{key = "balatro", path = KGL.selected_logo.file, px = KGL.selected_logo.X, py = KGL.selected_logo.Y, prefix_config = { key = false }}
+else
+    SMODS.Atlas{key = "balatro_bg", path = KGL.selected_logo.file.."/bg.png", px = KGL.selected_logo.X, py = KGL.selected_logo.Y, prefix_config = { key = false }}
+    SMODS.Atlas{key = "balatro_text", path = KGL.selected_logo.file.."/text.png", px = KGL.selected_logo.X, py = KGL.selected_logo.Y, prefix_config = { key = false }}
+end
+
+--------------------
+-- Music Syncing --
+--------------------
+
+KGL.conductor = {
+    track = '',
+    bpm = 105,
+    offset = -0.01,
+    sec_per_beat = 60 / (105/0.7), 
+    beat = 0, 
+    pitch = 0.7,
+}
+
+local sync_events = {
+    {beat = 7, type = "b"},
+    {beat = 7.5, type = "b"},
+    {beat = 10.5, type = "b"},
+    {beat = 10.75, type = "b"},
+    {beat = 11, type = "b"},
+    {beat = 11.5, type = "b"},
+    {beat = 11.75, type = "b"},
+    {beat = 12, type = "b"},
+    {beat = 12.5, type = "b"},
+    {beat = 12.75, type = "b"},
+    {beat = 13, type = "b"},
+    {beat = 13.5, type = "b"},
+    {beat = 13.75, type = "b"},
+    {beat = 14, type = "b"},
+    {beat = 15.5, type = "b"},
+    {beat = 16, type = "t"},
+    {beat = 18.5, type = "b"},
+    {beat = 19, type = "b"},
+    {beat = 20, type = "b"},
+    {beat = 21, type = "b"},
+    {beat = 22.5, type = "b"},
+    {beat = 23, type = "t"},
+    {beat = 25.5, type = "b"},
+    {beat = 26, type = "b"},
+    {beat = 27, type = "t"},
+    -- LOOP STARTS
+    {beat = 28, type = "b"},
+    {beat = 29.5, type = "b"},
+    {beat = 30, type = "t"},
+    {beat = 32.5, type = "b"},
+    {beat = 33, type = "b"},
+    {beat = 34, type = "b"},
+    {beat = 34.5, type = "t", loop = {0}},
+    {beat = 35, type = "b"},
+    {beat = 36.5, type = "b"},
+    {beat = 37, type = "t"},
+    {beat = 39, type = "t", loop = {0}},
+    {beat = 39.5, type = "b"},
+    {beat = 40, type = "b"},
+    {beat = 41, type = "t"},
+    {beat = 42, type = "b"},
+    {beat = 43.5, type = "b"},
+    {beat = 44, type = "t"},
+    {beat = 46.5, type = "b"},
+    {beat = 47, type = "b"},
+    {beat = 48, type = "b"},
+    {beat = 49, type = "b"},
+    {beat = 50.5, type = "b"},
+    {beat = 51, type = "t"},
+    {beat = 53.5, type = "b"},
+    {beat = 54, type = "b"},
+    {beat = 55, type = "t"},
+    {beat = 56, type = "b"},
+    {beat = 57.5, type = "b"},
+    {beat = 58, type = "t"},
+    {beat = 60.5, type = "b"},
+    {beat = 61, type = "b"},
+    {beat = 62, type = "b"},
+    {beat = 63, type = "b"},
+    {beat = 64.5, type = "b"},
+    {beat = 65, type = "t"},
+    {beat = 67.5, type = "b"},
+    {beat = 68, type = "b"},
+    {beat = 69, type = "t"},
+    {beat = 70, type = "b"},
+    {beat = 71.5, type = "b"},
+    {beat = 72, type = "t"},
+    {beat = 74.5, type = "b"},
+    {beat = 75, type = "b"},
+    {beat = 76, type = "b"},
+    {beat = 77, type = "b"},
+    {beat = 78.5, type = "b"},
+    {beat = 79, type = "t"},
+    {beat = 81.5, type = "b"},
+    {beat = 82, type = "b"},
+    {beat = 83, type = "t"},
+    {beat = 84, type = "b"},
+    {beat = 85.5, type = "b"},
+    {beat = 86, type = "t"},
+    {beat = 88.5, type = "b"},
+    {beat = 89, type = "b"},
+    {beat = 90, type = "b"},
+    {beat = 90.5, type = "t", loop = {0}},
+    {beat = 91, type = "b"},
+    {beat = 92.5, type = "b"},
+    {beat = 93, type = "t"},
+    {beat = 95, type = "t", loop = {0, 2}},
+    {beat = 95.5, type = "b"},
+    {beat = 96, type = "b"},
+    {beat = 97, type = "t"},
+    {beat = 98, type = "b"},
+    {beat = 99.5, type = "b"},
+    {beat = 100, type = "t"},
+    {beat = 102.5, type = "b"},
+    {beat = 103, type = "b"},
+    {beat = 104, type = "b"},
+    {beat = 105, type = "b"},
+    {beat = 106.5, type = "b"},
+    {beat = 107, type = "t"},
+    {beat = 109.5, type = "b"},
+    {beat = 110, type = "b"},
+    {beat = 111, type = "t"},
+    {beat = 112, type = "b"},
+    {beat = 113.5, type = "b"},
+    {beat = 114, type = "t"},
+    {beat = 116.5, type = "b"},
+    {beat = 117, type = "b"},
+    {beat = 118, type = "b"},
+    {beat = 119, type = "b"},
+    {beat = 120.5, type = "b"},
+    {beat = 121, type = "t"},
+    {beat = 123.5, type = "b"},
+    {beat = 124, type = "t", loop = {0}},
+    {beat = 125, type = "t"},
+    {beat = 126, type = "b"},
+    {beat = 127.5, type = "b"},
+    {beat = 128, type = "t"},
+    {beat = 130.5, type = "b"},
+    {beat = 131, type = "b"},
+    {beat = 132, type = "b"},
+    {beat = 133, type = "b"},
+    {beat = 134.5, type = "b"},
+    {beat = 135, type = "t"},
+    {beat = 137.5, type = "b"},
+    {beat = 138, type = "b"},
+    {beat = 139, type = "t"},
+    {beat = 140, type = "b"},
+    {beat = 141.5, type = "b"},
+    {beat = 142, type = "t"},
+    {beat = 144.5, type = "b"},
+    {beat = 145, type = "b"},
+    {beat = 146, type = "b"},
+    {beat = 146.5, type = "t", loop = {0, 2}},
+    {beat = 147, type = "b"},
+    {beat = 148.5, type = "b"},
+    {beat = 149, type = "t"},
+    {beat = 151, type = "t", loop = {0, 2}},
+    {beat = 151.5, type = "b"},
+    {beat = 152, type = "b"},
+    {beat = 153, type = "t"},
+    -- END LOOP
+    {beat = 375.75, type = "t"},
+    {beat = 376.5, type = "t"},
+}
+
+-- Updates the conductor when sound changes
+local modulate_soundref = modulate_sound
+function modulate_sound(dt)
+    local prev_track = SMODS.previous_track
+    modulate_soundref(dt)
+    local cur_track = SMODS.previous_track
+    if prev_track ~= cur_track then
+        KGL.conductor.track = cur_track
+        KGL.conductor.beat = 0
+    end
+end
+
+local last_beat = 0
+function KGL.condupd(dt)
+    -- Only activate for music1
+    
+    if KGL.conductor.track == 'music1' then
+        local beat = KGL.conductor.beat
+        G.SOUND_MANAGER.channel:push({type = "get_kgl_conductor"})
+        while G.SOUND_MANAGER.conductor:getCount() > 0 do
+            req = G.SOUND_MANAGER.conductor:pop()
+        end
+        if not req then return end
+
+        if beat - last_beat > KGL.conductor.sec_per_beat then -- bandage fix
+            if math.abs(beat - last_beat) < 100 then
+                G.ARGS.push = G.ARGS.push or {}
+                G.ARGS.push.type = 'restart_music'
+                if G.F_SOUND_THREAD then
+                    G.SOUND_MANAGER.channel:push(G.ARGS.push)
+                else
+                    RESTART_MUSIC(G.ARGS.push)
+                end
+            end
+        elseif beat ~= last_beat then
+            for _, v in ipairs(sync_events) do
+                local can = false
+                if v.beat < 14 or v.beat > 153 then 
+                    if v.beat > last_beat and v.beat <= beat then print(v.beat); can = true
+                    end
+                else 
+                    for i = 0, 2 do
+                        local found = true
+                        if v.loop then
+                            found = false
+                            for _, vv in ipairs(v.loop) do if vv == i then found = true; break; end end
+                        end
+                        if found then
+                            if v.beat + 140 * i > beat then break;
+                            elseif v.beat + 140 * i > last_beat then print(v.beat); can = true; break;
+                            end
+                        end
+                    end
+                end
+                if can then
+                    local element = (((v.loop_flip and v.type == "t") or v.type == "b") and G.SPLASH_LOGO or G.SPLASH_LOGO_TEXT)
+                    local old_scale = {x = KGL.selected_logo.X, y = KGL.selected_logo.Y}
+                    element.scale = {x = element.scale.x * 0.97, y = element.scale.y * 0.97}
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'ease',
+                        blockable = false,
+                        blocking = false,
+                        ref_table = element.scale,
+                        ref_value = "x",
+                        ease_to = old_scale.x,
+                        delay = 0.1,
+                        timer = "REAL"
+                    }))
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'ease',
+                        blockable = false,
+                        blocking = false,
+                        ref_table = element.scale,
+                        ref_value = "y",
+                        ease_to = old_scale.y,
+                        delay = 0.1,
+                        timer = "REAL"
+                    }))
+                end
+            end
+        end
+
+        local pos = req.pos - KGL.conductor.offset
+        last_beat = KGL.conductor.beat
+        KGL.conductor.beat = pos / KGL.conductor.sec_per_beat
+    end
 end
 

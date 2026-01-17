@@ -202,6 +202,54 @@ match_indent = true
 
 
 
+######################
+#Main menu - Replace the logo with a multipart logo if needed
+[[patches]]
+[patches.pattern]
+target = '''game.lua'''
+pattern = '''G.SPLASH_LOGO = Sprite(0, 0, 
+        13*SC_scale, 
+        13*SC_scale*(G.ASSET_ATLAS["balatro"].py/G.ASSET_ATLAS["balatro"].px),
+        G.ASSET_ATLAS["balatro"], {x=0,y=0})'''
+position = "at"
+payload = '''if not KGL.selected_logo.multipart_pulse then
+    G.SPLASH_LOGO = Sprite(0, 0, 
+        13*SC_scale, 
+        13*SC_scale*(G.ASSET_ATLAS["balatro"].py/G.ASSET_ATLAS["balatro"].px),
+        G.ASSET_ATLAS["balatro"], {x=0,y=0})
+else
+    G.SPLASH_LOGO_TEXT = Sprite(0, 0, 
+        13*SC_scale, 
+        13*SC_scale*(G.ASSET_ATLAS["balatro_text"].py/G.ASSET_ATLAS["balatro_text"].px),
+        G.ASSET_ATLAS["balatro_text"], {x=0,y=0})
+    G.SPLASH_LOGO_TEXT:define_draw_steps({{
+        shader = 'dissolve',
+    }})
+    G.SPLASH_LOGO_TEXT.dissolve_colours = {G.C.WHITE, G.C.WHITE}
+    G.SPLASH_LOGO_TEXT.dissolve = 1
+
+    G.SPLASH_LOGO = Sprite(0, 0, 
+        13*SC_scale, 
+        13*SC_scale*(G.ASSET_ATLAS["balatro_bg"].py/G.ASSET_ATLAS["balatro_bg"].px),
+        G.ASSET_ATLAS["balatro_bg"], {x=0,y=0})
+    G.SPLASH_LOGO.children.text = UIBox{
+        definition = {n = G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
+            {n = G.UIT.O, config = { object = G.SPLASH_LOGO_TEXT }},
+        }},
+        config = {align = "cm", offset = {x = 0, y = 0}, parent = G.SPLASH_LOGO}
+    }
+end'''
+match_indent = true
+
+######################
+#Main menu - Ease multipart dissolve
+[[patches]]
+[patches.pattern]
+target = '''game.lua'''
+pattern = '''ease_value(G.SPLASH_LOGO, 'dissolve', -1, nil, nil, nil, change_context == 'splash' and 2.3 or 0.9)'''
+position = "after"
+payload = '''if G.SPLASH_LOGO_TEXT then ease_value(G.SPLASH_LOGO_TEXT, 'dissolve', -1, nil, nil, nil, change_context == 'splash' and 2.3 or 0.9) end'''
+match_indent = true
 
 ######################
 #Main menu - Change the background of the buttons
